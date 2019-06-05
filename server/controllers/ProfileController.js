@@ -1,48 +1,49 @@
 const httpExceptionHandler = require('../classes/HttpResponseException/httpResponseException');
 
-class JobController {
+class ProfileController {
   constructor(profileDataAdapter) {
     this.profileDataAdapter = profileDataAdapter;
   }
-  getJobList() {
+
+  getProfile(id, profileId=null) {
     var result;
     try {
-      result = this.profileDataAdapter.getJobList(id)
+      result = this.profileDataAdapter.getProfile(id, profileId?profileId:null)
     } catch (err) {
       throw new httpExceptionHandler(400, err);
     }
     return result;
   }
 
-  createJobItem(jobItem) {
+  createProfile(id, profile) {
     var result;
     try {
-      result = this.profileDataAdapter.createJobItem(id, jobItem);
-    } catch (err) {
+      result = this.profileDataAdapter.createProfile(id, profile)
+    } catch(err) {
       throw new httpExceptionHandler(400, err);
     }
     return result;
   }
 
-  updateJobItem(id, change) {
+  updateProfile(id, profileId, change) {
     var result;
-    try {
-      result = this.profileDataAdapter.updateJobItem(id, change);
-    } catch (err) {
+    try{
+      result = this.profileDataAdapter.updateProfile(id, change);
+    } catch(err) {
       throw new httpExceptionHandler(400, err);
     }
     return result;
   }
 
-  deleteJobItem(id) {
+  deleteProfile(id) {
     var result;
     try {
-      result = this.profileDataAdapter.deleteJobItem(id);
-    } catch (err) {
+      result = profileDataAdapter.deleteProfile(id);
+    } catch(err) {
       throw new httpExceptionHandler(400, err);
     }
     return result;
   }
 }
 
-module.exports = JobController;
+module.exports = ProfileController;

@@ -5,11 +5,12 @@ const httpExceptionHandler = require('../classes/HttpResponseException/httpRespo
 const passport = require('passport');
 const passportJWT = passport.authenticate('jwt', { session: false });
 
+
 router.route('/')
   .post(passportJWT, (req, res, next) => {
-    var jobController = req.container.resolve('jobController');
+    var educationController = req.container.resolve('educationController');
     try {
-      res.send(jobController.getJobList(req.body.job));
+      res.send(educationController.getEducationList(req.body.education));
     } catch (err) {
       return new httpExceptionHandler(400, err);
     }
@@ -17,9 +18,9 @@ router.route('/')
 
 router.route('/create')
   .post(passportJWT, (req, res, next) => {
-    var jobController = req.container.resolve('jobController');
+    var educationController = req.container.resolve('educationController');
     try {
-      jobController.createJobItem(req.body.job);
+      educationController.createEducationItem(req.body.education);
     } catch (err) {
       return new httpExceptionHandler(400, err);
     }
@@ -27,9 +28,9 @@ router.route('/create')
 
 router.route('/update')
   .post(passportJWT, (req, res, next) => {
-    var jobController = req.container.resolve('jobController');
+    var educationController = req.container.resolve('educationController');
     try {
-      jobController.updateJobItem(req.body.job);
+      educationController.updateEducationItem(req.body.education);
     } catch (err) {
       return new httpExceptionHandler(400, err);
     }
@@ -37,9 +38,9 @@ router.route('/update')
 
 router.route('/delete')
   .post(passportJWT, (req, res, next) => {
-    var jobController = req.container.resolve('jobController');
+    var educationController = req.container.resolve('educationController');
     try {
-      jobController.deleteJobItem(req.body.job);
+      educationController.deleteEducationItem(req.body.education);
     } catch (err) {
       return new httpExceptionHandler(400, err);
     }
