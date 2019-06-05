@@ -13,17 +13,19 @@ class UserDataHandler {
     } catch (err) {
       throw new Error(err);
     }
+    return result;
   }
 
   async createUser(userItem) {
-    var userUser, result;
+    var newUser, result;
     try {
-      userUser = new User({ ...userItem });
-      result = await userUser.save();
+      newUser = new User({ ...userItem });
+      result = await newUser.save();
       console.log(result);
     } catch (err) {
       throw new Error(err);
     }
+    return result;
   }
 
   async updateUser(id, change) {
@@ -34,6 +36,7 @@ class UserDataHandler {
     } catch (err) {
       throw new Error(err);
     }
+    return result;
   }
 
   async deleteUser(id) {
@@ -44,6 +47,7 @@ class UserDataHandler {
     } catch (err) {
       throw new Error(err);
     }
+    return result;
   }
 }
 

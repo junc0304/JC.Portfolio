@@ -5,7 +5,7 @@ const httpExceptionHandler = require('../classes/HttpResponseException/httpRespo
 const passport = require('passport');
 const passportJWT = passport.authenticate('jwt', { session: false });
 
-router.route('/all')
+router.route('/')
   .post(passportJWT, (req, res, next) => {
     var projectController = req.container.resolve('projectController');
     try {
@@ -45,4 +45,4 @@ router.route('/delete')
     }
   });
 
-  module.exports = router;
+module.exports = router;

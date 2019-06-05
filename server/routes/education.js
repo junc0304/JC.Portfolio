@@ -5,7 +5,6 @@ const httpExceptionHandler = require('../classes/HttpResponseException/httpRespo
 const passport = require('passport');
 const passportJWT = passport.authenticate('jwt', { session: false });
 
-
 router.route('/')
   .post(passportJWT, (req, res, next) => {
     var educationController = req.container.resolve('educationController');

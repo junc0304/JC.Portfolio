@@ -6,7 +6,7 @@ const {JWT_SECRET, JWT_EXPIRY} =require('../config');
 
 const signToken = ({user}) => {
   return JWT.sign({
-    iss: 'JunC',
+    iss: 'JCWeb',
     sub: user.id,
     iat: new Date().getTime(),
     exp: new Date().setDate(new Date().getDate() + JWT_EXPIRY)
@@ -22,7 +22,7 @@ class AuthController {
     var result;
     try {
       if(this.userDataHandler.getUser(signUpItem.email)) { 
-        throw new httpExceptionHandler(400, err);
+        throw new Error('email exists');
       }
       result = this.userDataHandler.createUser(signUpItem);
     } catch (err) {
